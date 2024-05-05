@@ -21,7 +21,7 @@ const MessagesContainer = () => {
     <>
       {selectedConversation ? (
         <div
-          className={`md:min-w-[450px] md:flex md:flex-col h-full ${
+          className={`sm:min-w-[450px] md:flex md:flex-col h-full ${
             selectedConversation ? "flex flex-col" : "hidden"
           }`}
         >
