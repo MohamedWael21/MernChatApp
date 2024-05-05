@@ -2,6 +2,7 @@ import Conversation from "../models/conversationModel.js";
 import Message from "../models/messageMode.js";
 import catchAsyncError from "../utils/catchError.js";
 import AppError from "../utils/appError.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = catchAsyncError(async (req, res, next) => {
   const { message } = req.body;
@@ -27,8 +28,15 @@ export const sendMessage = catchAsyncError(async (req, res, next) => {
     conversation: conversation.id,
   });
 
+  const recieverSocketId = getReceiverSocketId(receiverId);
+
+  if (receiverId) {
+    io.to(recieverSocketId).emit("newMessage", messageDoc);
+  }
+
   res.status(200).json({
     success: true,
+    message: messageDoc,
   });
 });
 

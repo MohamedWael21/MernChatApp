@@ -8,8 +8,9 @@ import userRoute from "./routes/userRoute.js";
 import handleError from "./utils/handleError.js";
 import connectToDb from "./utils/dbConnect.js";
 import cookieParser from "cookie-parser";
+import morgan from "morgan";
 
-const app = express();
+import { app, server } from "./socket/socket.js";
 
 // load env variables
 dotenv.config();
@@ -17,13 +18,14 @@ dotenv.config();
 // middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(morgan("dev"));
 
 // all routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoute);
 app.use("/api/users", userRoute);
 
-app.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, () => {
   connectToDb()
     .then(() => {
       console.log("Connected to Database");
