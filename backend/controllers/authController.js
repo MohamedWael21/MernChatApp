@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 import AppError from "../utils/appError.js";
 import catchAsyncError from "../utils/catchError.js";
-import generateTokenAndSetCookie from "../utils/generateTokin.js";
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 import bcryptjs from "bcryptjs";
 
 export const signup = catchAsyncError(async (req, res, next) => {
