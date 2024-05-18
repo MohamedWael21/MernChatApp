@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
-
+import {Link} from 'react-router-dom'
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -41,12 +41,12 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             className="inline-block mt-2 text-sm transition hover:underline hover:text-blue-600 "
           >
             {"Don't"} have an account?
-          </a>
+          </Link>
           <div>
             <button
               className="mt-2 text-white bg-black border-none btn btn-block btn-sm hover:bg-blue-500"
