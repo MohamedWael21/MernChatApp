@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GenderCheckBox from "./GenderCheckBox";
 import useSignup from "../../hooks/useSignup";
+import {Link} from 'react-router-dom'
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
@@ -92,12 +93,12 @@ const Signup = () => {
             gender={inputs.gender}
             onGenderChange={handleGenderCahange}
           />
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="inline-block mt-2 text-sm transition hover:underline hover:text-blue-600 "
           >
             alerady have and account ?
-          </a>
+          </Link>
           <div>
             <button
               className="mt-2 text-white bg-black border-none btn btn-block btn-sm hover:bg-blue-500 "
